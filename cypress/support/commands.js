@@ -11,6 +11,13 @@
 //
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
+Cypress.Commands.add('addingProductToCart', (product) => {
+cy.get('#inventory_container .inventory_item').each(($results)=>{
+    if($results.text().includes(product)){
+        cy.wrap($results).find('[class="btn_primary btn_inventory"]').click()
+    }
+})
+})
 //
 //
 // -- This is a child command --
